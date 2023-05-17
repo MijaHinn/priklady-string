@@ -1,1 +1,1 @@
-# priklady-string
+# JavaScript Kung-Fu: Textové řetězce
