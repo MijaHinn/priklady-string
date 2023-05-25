@@ -21,6 +21,11 @@ const jmeno = prompt('Zadej svoje jméno');
 // správně reaguje na všechny možnosti.
 const jmeno = 'Kateřina';
 
+console.log(jmeno.length);
+
+if (jmeno.length > 6) {
+    console.log("Týjo, to je ale dlouhé jméno");
+}
 
 
 // 2) Jen podle příjmení odhadni, zda se jedná o ženu nebo muže.
@@ -31,8 +36,12 @@ const jmeno = 'Kateřina';
 // - Nováková je asi žena.
 // - Novotný je asi muž.
 // Vyzkoušej víc možností, ať ověříš správnost svého programu.
-const prijmeni = 'Jasnozřivá';
 
+const prijmeni = 'Nováková';
+
+if (prijmeni.endsWith("ová") || prijmeni.endsWith("ná")) {
+    console.log(prijmeni +" je asi žena");
+} else console.log(prijmeni +" je asi muž");
 
 
 // BONUS:
@@ -42,6 +51,15 @@ const prijmeni = 'Jasnozřivá';
 // nebo false, jde-li o mužské příjmení.
 // Pak můžeš otestovat různá jména jednoduše voláním funkce.
 
+const jeZena = (prijmeni) => {
+    if (prijmeni.endsWith("ová") || prijmeni.endsWith("ná")) {
+        return true;
+    }
+    
+    return false;
+}
+
+console.log(jeZena("Novák"));
 
 
 // 3) Nech uživatele, aby zadal text - použij metodu prompt(...)
@@ -54,12 +72,21 @@ const prijmeni = 'Jasnozřivá';
 // - Máme psa! Haf. 🐶
 // - Pes nenalezen. 😥
 
+const zvire = prompt("Co je lepší - Pes nebo kočka?");
+
+if (zvire.toLowerCase().includes("pes")) {
+    console.log("Máme psa! Haf. 🐶");
+} else console.log("Pes nenalezen. 😥");
 
 
 // 4) Nech uživatele, aby zadal text - opět pomocí prompt().
 // Slovo "mrkev" v textu nahraď za "banán".
 // Vyměňovat mrkve za banány je schopnost, která se ti bude
 // v životě hodit!
+
+const text1 = prompt("Napiš větu, která bude obsahovat slovo mrkev");
+
+console.log(text1.toLowerCase().replace("mrkev", "banán"));
 
 
 // BONUS:
@@ -68,7 +95,9 @@ const prijmeni = 'Jasnozřivá';
 // Mrkni na první odstavec a příklad pod ním:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
 
+const text2 = prompt("Napiš větu, která bude vícekrát obsahovat slovo mrkev");
 
+console.log(text2.toLowerCase().replaceAll("mrkev", "banán"));
 
 
 // 5) Napiš funkci, která přijme dva řetězce a vrátí true,
@@ -76,6 +105,15 @@ const prijmeni = 'Jasnozřivá';
 // se někde uprostřed.
 // např. pro 'kokosové mléko' a 'kos' vrátí true
 
+const obsahuje = (slovo1, slovo2) => {
+    if (slovo1.includes(slovo2)) {
+    return true;
+    }
+
+    return false;
+}
+
+console.log(obsahuje("kokosové mléko", "kos"));
 
 
 // 6) Nech uživatele, aby zadal text - opět pomocí prompt().
@@ -87,3 +125,20 @@ const prijmeni = 'Jasnozřivá';
 // - matematiku - dělení, zaokrouhlování, odčítání, přičítání
 // - metodu slice() textového řetězce
 
+const text3 = prompt("Zadej nějaké slovo");
+
+const triPismena = () => {
+    const delkaTextu = text3.length;
+
+    if (delkaTextu >= 5) {
+        let polovina = delkaTextu / 2;
+        polovina = Math.round(polovina * 1) / 1;
+
+        const vysledek = text3.slice((polovina - 2), (polovina + 1));
+        return vysledek;  
+    }
+    
+    return "Moc krátký text";
+}
+
+console.log(triPismena());
